@@ -23,10 +23,25 @@ function observe(data) {
   return new Observer(data);
 }
 
+function proxy(vm,source,key){ //代理数据 vm.msg=vm._data.msg
+   Object.defineProperty(vm,key,{
+     get(){
+          return vm[source][key]
+     },
+     set(newValue){
+          vm[source][key] = newValue;
+     }
+   })
+}
+
+
 function initData(vm) {
   let data = vm.$options.data;
   data = vm._data = typeof data === "function" ? data.call(vm) : data || {};
 
+  for(let key in data){
+    proxy(vm,'_data',key)  //将vm 上的取值 赋值操作代理给vm._data属性
+  }
   observe(vm._data);
 }
 
