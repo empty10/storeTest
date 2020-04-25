@@ -17,4 +17,4 @@ let vm = new Vue({
     }
 })
 
-// console.log(vm)
+console.log(vm._data.msg=100)

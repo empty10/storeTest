@@ -1,7 +1,7 @@
 import {initState} from './observe/index'
 
 function Vue(options) {
-    console.log('====',options)
+
     this._init(options)
 }
 
