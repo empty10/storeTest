@@ -9,7 +9,7 @@ function defineReactive(data, key, value) {
       return value;
     },
     set(newValue) {
-      console.log('设置==',newValue)
+      console.log('设置',newValue)
       if (value === newValue) return;
       value = newValue;
     },
